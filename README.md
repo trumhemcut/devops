@@ -1,5 +1,30 @@
-# DevOps
+# DevOps for outsourcing companies
+You're an outsourcing company and you want to use open source software to save cost. Such as, Gitlab & Slack for colloboration tool & source control, Jenkins for build & deployment tool, Docker as environment provisioning tool...
 
+I've tried to setup everything up by using Docker in a single machine. But you can scale out to a Docker Swarm cluster as well (I haven't tried it yet).
+
+This repo is folked from https://github.com/marcelbirkner/docker-ci-tool-stack
+
+## Usage
+### Prerequisites
+* Install Docker & docker-compose
+* A Linux / Mac will be best suited. I haven't tried on Windows yet
+
+### Provisioning everything up by docker-compose
+```
+$ docker-compose up --build
+```
+After you run the above command, Docker will provision following containers:
+- **nt-openldap**: An open LDAP server with some default credentials for you to use.
+- **nt-ldapadmin**: A webserver connects to LDAP to be easily manage the LDAP server such as creating new account, update password, etc...
+- **nt-gitlab**: A standalone Gitlab server connected to the LDAP server & ready to use.
+- **nt-jenkins**: A pre-configured Jenkins server with some project templates (in C# & NodeJS) so that you can easily inherit & clone for new projects.
+- **and more containers will be added ...** 
+### 
+
+## Customizations
+### LDAP Server
+[TBD]
 ## Jenkins
 https://github.com/jenkinsci/docker
 https://github.com/jenkinsci/docker/issues/263
