@@ -1,0 +1,24 @@
+version: '3'
+services:
+  openldap:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    image: nashtech/openldap:latest
+    container_name: nt-openldap
+    tty: true
+    stdin_open: true
+    ports:
+      - "389:389"
+      - "636:636"
+    hostname: "ldap.nashtechglobal.com"
+  ldapadmin:
+    image: osixia/phpldapadmin:latest
+    container_name: nt-ldapadmin
+    environment:
+      PHPLDAPADMIN_LDAP_HOSTS: "nt-openldap"
+      PHPLDAPADMIN_HTTPS: "false"
+    ports:
+      - "8082:80"
+    depends_on:
+     - openldap

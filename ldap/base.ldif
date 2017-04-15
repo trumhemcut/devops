@@ -1,0 +1,109 @@
+dn: dc=nashtechglobal,dc=com
+objectClass: top
+objectClass: dcObject
+objectClass: organization
+dc: nashtechglobal
+o : nashtechglobal
+
+dn: ou=admins,dc=nashtechglobal,dc=com
+objectClass: organizationalUnit
+ou: admins
+
+dn: ou=people,dc=nashtechglobal,dc=com
+objectClass: organizationalUnit
+ou: people
+
+dn: ou=groups,dc=nashtechglobal,dc=com
+objectClass: organizationalUnit
+ou: groups
+
+dn: cn=admin,ou=admins,dc=nashtechglobal,dc=com
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+cn: admin
+sn: admin
+uid: admin
+description: Admin User
+
+dn: cn=phuongle,ou=people,dc=nashtechglobal,dc=com
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+cn: phuongle
+sn: phuongle
+uid: phuongle
+userpassword: Harveynash@123
+
+dn: cn=phihuynh,ou=people,dc=nashtechglobal,dc=com
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+cn: phihuynh
+sn: phihuynh
+uid: phihuynh
+userpassword: Harveynash@123
+
+dn: cn=thangchung,ou=people,dc=nashtechglobal,dc=com
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+cn: thangchung
+sn: thangchung
+uid: thangchung
+userpassword: Harveynash@123
+
+dn: cn=thiennguyen,ou=people,dc=nashtechglobal,dc=com
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+cn: thiennguyen
+sn: thiennguyen
+uid: thiennguyen
+userpassword: Harveynash@123
+
+dn: cn=nguyenlet,ou=people,dc=nashtechglobal,dc=com
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+cn: nguyenlet
+sn: nguyenlet
+uid: nguyenlet
+userpassword: Harveynash@123
+
+dn: cn=Administrators,ou=groups,dc=nashtechglobal,dc=com
+objectClass: top
+objectClass: groupOfNames
+cn: Administrators
+member: cn=phihuynh,ou=people,dc=nashtechglobal,dc=com
+member: cn=phuongle,ou=people,dc=nashtechglobal,dc=com
+member: cn=thiennguyen,ou=people,dc=nashtechglobal,dc=com
+member: cn=thangchung,ou=people,dc=nashtechglobal,dc=com
+
+dn: cn=Read Only,ou=groups,dc=nashtechglobal,dc=com
+objectClass: top
+objectClass: groupOfNames
+cn: Read Only
+member: cn=thangchung,ou=people,dc=nashtechglobal,dc=com
+member: cn=thiennguyen,ou=people,dc=nashtechglobal,dc=com
+
+dn: cn=Group1,ou=groups,dc=nashtechglobal,dc=com
+objectClass: top
+objectClass: groupOfNames
+cn: Group1
+member: cn=thiennguyen,ou=people,dc=nashtechglobal,dc=com
+
+dn: cn=Group2,ou=groups,dc=nashtechglobal,dc=com
+objectClass: top
+objectClass: groupOfNames
+cn: Group2
+member: cn=thiennguyen,ou=people,dc=nashtechglobal,dc=com
+member: cn=thangchung,ou=people,dc=nashtechglobal,dc=com
+member: cn=phuongle,ou=people,dc=nashtechglobal,dc=com
+

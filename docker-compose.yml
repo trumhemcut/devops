@@ -1,0 +1,76 @@
+version: '3'
+volumes: 
+  jenkins_home:
+  gitlab_data:
+  gitlab_log:
+  gitlab_config:
+  ocean_home:
+services:
+  openldap:
+    build: 
+      context: ./ldap
+      dockerfile: Dockerfile
+    image: nashtech/openldap:latest
+    restart: always
+    container_name: nt-openldap
+    tty: true
+    stdin_open: true
+    ports:
+      - "389:389"
+      - "636:636"
+    hostname: "ldap.nashtechglobal.com"
+  ldapadmin:
+    image: osixia/phpldapadmin:latest
+    container_name: nt-ldapadmin
+    restart: always
+    environment:
+      PHPLDAPADMIN_LDAP_HOSTS: "nt-openldap"
+      PHPLDAPADMIN_HTTPS: "false"
+    ports:
+      - "8082:80"
+    depends_on:
+     - openldap
+  gitlab:
+    container_name: nt-gitlab
+    build:
+      context: ./gitlab
+      dockerfile: Dockerfile
+    image: 'nashtech/gitlab'
+    restart: always
+    hostname: 'git.nashtechglobal.com'
+    ports: 
+      - '80:80'
+      - '443:443'
+      - '2222:22'
+    volumes: 
+      - 'gitlab_config:/etc/gitlab'
+      - ./gitlab/gitlab.rb:/etc/gitlab/gitlab.rb
+      - 'gitlab_log:/var/log/gitlab'
+      - 'gitlab_data:/var/opt/gitlab'
+    depends_on: 
+      - openldap
+  jenkins:
+    container_name: nt-jenkins
+    build: 
+      context: ./jenkins
+    image: stepone/jenkins:latest
+    restart: always
+    volumes: 
+      - /var/run/docker.sock:/var/run/docker.sock
+      - 'jenkins_home:/var/jenkins_home'
+      - /artifacts:/artifacts
+    ports: 
+      - '8080:8080'
+      - '50000:50000'
+    extra_hosts: 
+      #- 'git.nashtechglobal.com:192.168.1.107' # Home
+      - 'git.nashtechglobal.com:192.168.168.24' # NashTech
+      # - 'git.nashtechglobal.com:10.15.7.201'  # MacDonald
+    depends_on: 
+      - gitlab
+  sonarqube:
+    container_name: nt-sonarqube
+    image: sonarqube
+    ports: 
+      - '9000:9000'
+      - '9092:9092'
