@@ -160,12 +160,12 @@ gitlab_rails['ldap_servers'] = YAML.load <<-'EOS'
     port: 389
     uid: 'uid'
     method: 'plain'
-    bind_dn: 'cn=phihuynh,ou=people,dc=nashtechglobal,dc=com'
-    password: 'Harveynash@123'
+    bind_dn: 'cn=phihuynh,ou=people,dc=yourcompany,dc=com'
+    password: 'Company@123'
     active_directory: false
     allow_username_or_email_login: true
     block_auto_created_users: false
-    base: 'dc=nashtechglobal,dc=com'
+    base: 'dc=yourcompany,dc=com'
     user_filter: ''
     attributes:
       username: ['uid', 'userid', 'sAMAccountName']

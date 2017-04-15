@@ -14,7 +14,7 @@ if [ ! -f /data/lib/ldap/DB_CONFIG ]; then
     ldapmodify -Y EXTERNAL -H ldapi:/// -f /root/domain.ldif
 
     ldapadd -Q -Y EXTERNAL -H ldapi:/// -f /root/memberOf.ldif
-    ldapadd -x -D cn=admin,ou=admins,dc=nashtechglobal,dc=com -w Harveynash@123 -f /root/base.ldif
+    ldapadd -x -D cn=admin,ou=admins,dc=yourcompany,dc=com -w Harveynash@123 -f /root/base.ldif
 
     service slapd stop
     sleep 3

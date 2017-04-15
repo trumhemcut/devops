@@ -11,7 +11,7 @@ services:
     ports:
       - "389:389"
       - "636:636"
-    hostname: "ldap.nashtechglobal.com"
+    hostname: "ldap.yourcompany.com"
   ldapadmin:
     image: osixia/phpldapadmin:latest
     container_name: nt-ldapadmin

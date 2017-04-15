@@ -7,24 +7,24 @@ https://github.com/Appdynamics/extensions-docker/tree/master/openldap
 Installs and configures OpenLDAP server with the following credentials
 
 ```
-Bind DN: cn=admin,ou=admins,dc=nashtechglobal,dc=com
+Bind DN: cn=admin,ou=admins,dc=yourcompany,dc=com
 password: Harveynash@123
 ```
 
 ### LDAP Configuration
 ##### Connection
 ```
-Bind DN: cn=admin,ou=admins,dc=nashtechglobal,dc=com
+Bind DN: cn=admin,ou=admins,dc=yourcompany,dc=com
 password: Harveynash@123
 ```
 ##### Users
 ```
-Base DN: ou=people,dc=nashtechglobal,dc=com
+Base DN: ou=people,dc=yourcompany,dc=com
 Attributes: dn, cn, uid, memberOf
 ```
 ##### Groups
 ```
-Base DN: ou=groups,dc=nashtechglobal,dc=com
+Base DN: ou=groups,dc=yourcompany,dc=com
 Attributes: dn, cn, member
 ```
 ##### BuiltIn Users and Groups
@@ -47,9 +47,9 @@ Command to check LDAP is working
 username: admin
 password: admin
 $ docker exec -it ldapserver
-$ ldapsearch -x -H ldap://nt-openldap -b dc=nashtechglobal,dc=com -D "cn=admin,ou=admins,dc=nashtechglobal,dc=com" -w Harveynash@123
+$ ldapsearch -x -H ldap://nt-openldap -b dc=yourcompany,dc=com -D "cn=admin,ou=admins,dc=yourcompany,dc=com" -w Harveynash@123
 $ ldapsearch -x -H ldap://192.168.1.107 -b dc=appdynamics,dc=com -D "cn=admin,ou=admins,dc=appdynamics,dc=com" -w Harveynash@123
 
 ## Login with php server
-username: cn=admin,dc=nashtechglobal,dc=local
+username: cn=admin,dc=yourcompany,dc=local
 password: admin

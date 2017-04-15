@@ -16,7 +16,7 @@
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
-        <url>http://git.nashtechglobal.com/stepone/dotnetcore.git</url>
+        <url>http://git.yourcompany.com/aspnetcore/aspnetcore.git</url>
         <credentialsId>aadb3845-4420-4011-9103-a142c5e4f1b4</credentialsId>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
