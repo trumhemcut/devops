@@ -27,13 +27,13 @@ It may take sometimes depending on the network connection to pull images & build
 ### LDAP Server
 Usually, your company has already setup a LDAP Server for using. But it's still neccessary to get this LDAP Server up & running for testing purpose. Assuming you're working on this activity because you're looking for a new way to build a DevOps flow for your company. In that case I would suggest to keep this LDAP container running to test.
 
-This LDAP container runs on the standard LDAP port 636 although I haven't exposed. Instead, the webserver LDAP admin will connect to that LDAP Server and is available for us to manage the LDAP Server.
+This LDAP container runs on the standard LDAP port 389 & 636. Instead working directly with LDAP Server, the webserver LDAP admin will connect to that LDAP Server and is available for us to manage the LDAP Server.
 
 To double-check the LDAP is working correctly, I've usually used the commands below:
 ```
 $ docker exec -it nt-openldap bash
 $ ldapsearch -x -H ldap://nt-openldap -b dc=yourcompany,dc=com -D "cn=admin,ou=admins,dc=yourcompany,dc=com" -w Company@123
-$ ldapsearch -x -H ldap://192.168.1.107 -b dc=appdynamics,dc=com -D "cn=admin,ou=admins,dc=appdynamics,dc=com" -w Company@123
+$ ldapsearch -x -H ldap://ldap.yourcompany.com -b dc=yourcompany,dc=com -D "cn=admin,ou=admins,dc=yourcompany,dc=com" -w Company@123
 ```
 
 Preconfigured user list:
