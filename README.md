@@ -10,10 +10,10 @@ This repo is folked from https://github.com/marcelbirkner/docker-ci-tool-stack
 * Install Docker & docker-compose
 * A Linux / Mac will be best suited. I haven't tried on Windows yet
 
-### Provisioning everything up by docker-compose
+### Provisioning everything up by running ```./build.sh```
 ```
 $ git clone https://github.com/trumhemcut/devops.git && cd devops
-$ docker-compose up --build
+$ ./build.sh
 ```
 It may take sometimes depending on the network connection to pull images & build the containers. If everything is ok, Docker will provision the following containers:
 - **nt-openldap**: An open LDAP server with some default credentials for you to use.
