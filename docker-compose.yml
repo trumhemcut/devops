@@ -4,13 +4,14 @@ volumes:
   gitlab_data:
   gitlab_log:
   gitlab_config:
-  ocean_home:
+  ldap_data:
+  artifacts_data:
 services:
   openldap:
     build: 
       context: ./ldap
       dockerfile: Dockerfile
-    image: nashtech/openldap:latest
+    image: trumhemcut/openldap:latest
     restart: always
     container_name: nt-openldap
     tty: true
@@ -18,6 +19,8 @@ services:
     ports:
       - "389:389"
       - "636:636"
+    #volumes: 
+    #  - 'ldap_data:/data'
     hostname: "ldap.yourcompany.com"
   ldapadmin:
     image: osixia/phpldapadmin:latest
@@ -35,7 +38,7 @@ services:
     build:
       context: ./gitlab
       dockerfile: Dockerfile
-    image: 'nashtech/gitlab'
+    image: 'trumhemcut/gitlab'
     restart: always
     hostname: 'git.yourcompany.com'
     ports: 
@@ -44,21 +47,21 @@ services:
       - '2222:22'
     volumes: 
       - 'gitlab_config:/etc/gitlab'
-      - ./gitlab/gitlab.rb:/etc/gitlab/gitlab.rb
       - 'gitlab_log:/var/log/gitlab'
       - 'gitlab_data:/var/opt/gitlab'
+      - ./gitlab/gitlab.rb:/etc/gitlab/gitlab.rb
     depends_on: 
       - openldap
   jenkins:
     container_name: nt-jenkins
     build: 
       context: ./jenkins
-    image: stepone/jenkins:latest
+    image: trumhemcut/jenkins:latest
     restart: always
     volumes: 
       - /var/run/docker.sock:/var/run/docker.sock
       - 'jenkins_home:/var/jenkins_home'
-      - /artifacts:/artifacts
+      - 'artifacts_data:/artifacts'
     ports: 
       - '8080:8080'
       - '50000:50000'

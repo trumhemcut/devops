@@ -4,7 +4,7 @@ services:
     build: 
       context: .
       dockerfile: Dockerfile
-    image: nashtech/openldap:latest
+    image: trumhemcut/openldap:latest
     container_name: nt-openldap
     tty: true
     stdin_open: true

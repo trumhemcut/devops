@@ -1,23 +1,23 @@
-dn: dc=nashtechglobal,dc=com
+dn: dc=yourcompany,dc=com
 objectClass: top
 objectClass: dcObject
 objectClass: organization
-dc: nashtechglobal
-o : nashtechglobal
+dc: yourcompany
+o : yourcompany
 
-dn: ou=admins,dc=nashtechglobal,dc=com
+dn: ou=admins,dc=yourcompany,dc=com
 objectClass: organizationalUnit
 ou: admins
 
-dn: ou=people,dc=nashtechglobal,dc=com
+dn: ou=people,dc=yourcompany,dc=com
 objectClass: organizationalUnit
 ou: people
 
-dn: ou=groups,dc=nashtechglobal,dc=com
+dn: ou=groups,dc=yourcompany,dc=com
 objectClass: organizationalUnit
 ou: groups
 
-dn: cn=admin,ou=admins,dc=nashtechglobal,dc=com
+dn: cn=admin,ou=admins,dc=yourcompany,dc=com
 objectClass: inetOrgPerson
 objectClass: organizationalPerson
 objectClass: person
@@ -27,7 +27,7 @@ sn: admin
 uid: admin
 description: Admin User
 
-dn: cn=phuongle,ou=people,dc=nashtechglobal,dc=com
+dn: cn=phuongle,ou=people,dc=yourcompany,dc=com
 objectClass: inetOrgPerson
 objectClass: organizationalPerson
 objectClass: person
@@ -37,7 +37,7 @@ sn: phuongle
 uid: phuongle
 userpassword: Company@123
 
-dn: cn=phihuynh,ou=people,dc=nashtechglobal,dc=com
+dn: cn=phihuynh,ou=people,dc=yourcompany,dc=com
 objectClass: inetOrgPerson
 objectClass: organizationalPerson
 objectClass: person
@@ -47,7 +47,7 @@ sn: phihuynh
 uid: phihuynh
 userpassword: Company@123
 
-dn: cn=thangchung,ou=people,dc=nashtechglobal,dc=com
+dn: cn=thangchung,ou=people,dc=yourcompany,dc=com
 objectClass: inetOrgPerson
 objectClass: organizationalPerson
 objectClass: person
@@ -57,7 +57,7 @@ sn: thangchung
 uid: thangchung
 userpassword: Company@123
 
-dn: cn=thiennguyen,ou=people,dc=nashtechglobal,dc=com
+dn: cn=thiennguyen,ou=people,dc=yourcompany,dc=com
 objectClass: inetOrgPerson
 objectClass: organizationalPerson
 objectClass: person
@@ -67,7 +67,7 @@ sn: thiennguyen
 uid: thiennguyen
 userpassword: Company@123
 
-dn: cn=nguyenlet,ou=people,dc=nashtechglobal,dc=com
+dn: cn=nguyenlet,ou=people,dc=yourcompany,dc=com
 objectClass: inetOrgPerson
 objectClass: organizationalPerson
 objectClass: person
@@ -77,33 +77,33 @@ sn: nguyenlet
 uid: nguyenlet
 userpassword: Company@123
 
-dn: cn=Administrators,ou=groups,dc=nashtechglobal,dc=com
+dn: cn=Administrators,ou=groups,dc=yourcompany,dc=com
 objectClass: top
 objectClass: groupOfNames
 cn: Administrators
-member: cn=phihuynh,ou=people,dc=nashtechglobal,dc=com
-member: cn=phuongle,ou=people,dc=nashtechglobal,dc=com
-member: cn=thiennguyen,ou=people,dc=nashtechglobal,dc=com
-member: cn=thangchung,ou=people,dc=nashtechglobal,dc=com
+member: cn=phihuynh,ou=people,dc=yourcompany,dc=com
+member: cn=phuongle,ou=people,dc=yourcompany,dc=com
+member: cn=thiennguyen,ou=people,dc=yourcompany,dc=com
+member: cn=thangchung,ou=people,dc=yourcompany,dc=com
 
-dn: cn=Read Only,ou=groups,dc=nashtechglobal,dc=com
+dn: cn=Read Only,ou=groups,dc=yourcompany,dc=com
 objectClass: top
 objectClass: groupOfNames
 cn: Read Only
-member: cn=thangchung,ou=people,dc=nashtechglobal,dc=com
-member: cn=thiennguyen,ou=people,dc=nashtechglobal,dc=com
+member: cn=thangchung,ou=people,dc=yourcompany,dc=com
+member: cn=thiennguyen,ou=people,dc=yourcompany,dc=com
 
-dn: cn=Group1,ou=groups,dc=nashtechglobal,dc=com
+dn: cn=Group1,ou=groups,dc=yourcompany,dc=com
 objectClass: top
 objectClass: groupOfNames
 cn: Group1
-member: cn=thiennguyen,ou=people,dc=nashtechglobal,dc=com
+member: cn=thiennguyen,ou=people,dc=yourcompany,dc=com
 
-dn: cn=Group2,ou=groups,dc=nashtechglobal,dc=com
+dn: cn=Group2,ou=groups,dc=yourcompany,dc=com
 objectClass: top
 objectClass: groupOfNames
 cn: Group2
-member: cn=thiennguyen,ou=people,dc=nashtechglobal,dc=com
-member: cn=thangchung,ou=people,dc=nashtechglobal,dc=com
-member: cn=phuongle,ou=people,dc=nashtechglobal,dc=com
+member: cn=thiennguyen,ou=people,dc=yourcompany,dc=com
+member: cn=thangchung,ou=people,dc=yourcompany,dc=com
+member: cn=phuongle,ou=people,dc=yourcompany,dc=com
 

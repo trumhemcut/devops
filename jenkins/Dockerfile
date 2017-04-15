@@ -33,7 +33,7 @@ RUN /usr/local/bin/install-plugins.sh blueocean:1.0.1
 # COPY jobs/3-conference-app-seed-job.xml /usr/share/jenkins/ref/jobs/3-conference-app-seed-job/config.xml
 # COPY jobs/4-selenium2-seed-job.xml /usr/share/jenkins/ref/jobs/4-selenium2-seed-job/config.xml
 # COPY jobs/5-docker-admin-seed-job.xml /usr/share/jenkins/ref/jobs/5-docker-admin-seed-job/config.xml
-COPY jobs/6-stepone-dotnetcore-job.xml /usr/share/jenkins/ref/jobs/stepone-dotnetcore/config.xml
+COPY jobs/6-dotnetcore-job.xml /usr/share/jenkins/ref/jobs/dotnetcore/config.xml
 ############################################
 # Configure Jenkins
 ############################################
