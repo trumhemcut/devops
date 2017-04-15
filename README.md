@@ -49,8 +49,8 @@ thiennguyen, thangchung, phuongle: Group2
 ### LDAP Web Admin
 To login to LDAP Web Admin, access to the url http://ldap.yourcompany.com:8082/, click login. Then fill the ```Login DN``` && ```Password```:
 
-Login DN: cn=admin,ou=admins,dc=yourcompany,dc=com
-Password: Company@123
+* ```Login DN```: cn=admin,ou=admins,dc=yourcompany,dc=com
+* ```Password```: Company@123
 
 From here, you can create new account, change password, create new group, move users to groups, etc...
 
