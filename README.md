@@ -54,6 +54,8 @@ To login to LDAP Web Admin, access to the url http://ldap.yourcompany.com:8082/,
 
 From here, you can create new account, change password, create new group, move users to groups, etc...
 
+In case you are confident to config the LDAP Server via LDAP CLI, then you can remove this container in the ```docker-compose.yml```
+
 ## Jenkins
 https://github.com/jenkinsci/docker
 https://github.com/jenkinsci/docker/issues/263
