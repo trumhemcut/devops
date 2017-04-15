@@ -31,6 +31,7 @@ This LDAP container runs on the standard LDAP port 636 although I haven't expose
 
 To double-check the LDAP is working correctly, I've usually used the commands below:
 ```
+# Assume you've run the ./build.sh command
 $ docker exec -it nt-openldap bash
 $ ldapsearch -x -H ldap://nt-openldap -b dc=yourcompany,dc=com -D "cn=admin,ou=admins,dc=yourcompany,dc=com" -w Company@123
 $ ldapsearch -x -H ldap://192.168.1.107 -b dc=appdynamics,dc=com -D "cn=admin,ou=admins,dc=appdynamics,dc=com" -w Company@123
@@ -40,10 +41,18 @@ Preconfigured user list:
 `Company@123` is the password for all Users
 ```
 phihuynh, phuongle: Administrators
-user1, user2: Read Only
-user1: Group1
-user1, user2, user3: Group2
+thangchung, thiennguyen: Read Only
+thiennguyen: Group1
+thiennguyen, thangchung, phuongle: Group2
 ```
+
+### LDAP Web Admin
+To login to LDAP Web Admin, access to the url http://ldap.yourcompany.com:8082/, click login. Then fill the ```Login DN``` && ```Password```:
+
+Login DN: cn=admin,ou=admins,dc=yourcompany,dc=com
+Password: Company@123
+
+From here, you can create new account, change password, create new group, move users to groups, etc...
 
 ## Jenkins
 https://github.com/jenkinsci/docker
