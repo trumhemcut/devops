@@ -8,14 +8,14 @@ Installs and configures OpenLDAP server with the following credentials
 
 ```
 Bind DN: cn=admin,ou=admins,dc=yourcompany,dc=com
-password: Harveynash@123
+password: Company@123
 ```
 
 ### LDAP Configuration
 ##### Connection
 ```
 Bind DN: cn=admin,ou=admins,dc=yourcompany,dc=com
-password: Harveynash@123
+password: Company@123
 ```
 ##### Users
 ```
@@ -28,7 +28,7 @@ Base DN: ou=groups,dc=yourcompany,dc=com
 Attributes: dn, cn, member
 ```
 ##### BuiltIn Users and Groups
-`Harveynash@123` is the password for all Users
+`Company@123` is the password for all Users
 ```
 phihuynh, phuongle: Administrators
 user1, user2: Read Only
@@ -47,8 +47,8 @@ Command to check LDAP is working
 username: admin
 password: admin
 $ docker exec -it ldapserver
-$ ldapsearch -x -H ldap://nt-openldap -b dc=yourcompany,dc=com -D "cn=admin,ou=admins,dc=yourcompany,dc=com" -w Harveynash@123
-$ ldapsearch -x -H ldap://192.168.1.107 -b dc=appdynamics,dc=com -D "cn=admin,ou=admins,dc=appdynamics,dc=com" -w Harveynash@123
+$ ldapsearch -x -H ldap://nt-openldap -b dc=yourcompany,dc=com -D "cn=admin,ou=admins,dc=yourcompany,dc=com" -w Company@123
+$ ldapsearch -x -H ldap://192.168.1.107 -b dc=appdynamics,dc=com -D "cn=admin,ou=admins,dc=appdynamics,dc=com" -w Company@123
 
 ## Login with php server
 username: cn=admin,dc=yourcompany,dc=local

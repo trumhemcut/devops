@@ -17,7 +17,7 @@ olcRootDN: cn=admin,ou=admins,dc=yourcompany,dc=com
 dn: olcDatabase={2}bdb,cn=config
 changetype: modify
 add: olcRootPW
-olcRootPW: Harveynash@123
+olcRootPW: Company@123
 
 dn: olcDatabase={2}bdb,cn=config
 add: olcAccess

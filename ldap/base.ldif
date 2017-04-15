@@ -35,7 +35,7 @@ objectClass: top
 cn: phuongle
 sn: phuongle
 uid: phuongle
-userpassword: Harveynash@123
+userpassword: Company@123
 
 dn: cn=phihuynh,ou=people,dc=nashtechglobal,dc=com
 objectClass: inetOrgPerson
@@ -45,7 +45,7 @@ objectClass: top
 cn: phihuynh
 sn: phihuynh
 uid: phihuynh
-userpassword: Harveynash@123
+userpassword: Company@123
 
 dn: cn=thangchung,ou=people,dc=nashtechglobal,dc=com
 objectClass: inetOrgPerson
@@ -55,7 +55,7 @@ objectClass: top
 cn: thangchung
 sn: thangchung
 uid: thangchung
-userpassword: Harveynash@123
+userpassword: Company@123
 
 dn: cn=thiennguyen,ou=people,dc=nashtechglobal,dc=com
 objectClass: inetOrgPerson
@@ -65,7 +65,7 @@ objectClass: top
 cn: thiennguyen
 sn: thiennguyen
 uid: thiennguyen
-userpassword: Harveynash@123
+userpassword: Company@123
 
 dn: cn=nguyenlet,ou=people,dc=nashtechglobal,dc=com
 objectClass: inetOrgPerson
@@ -75,7 +75,7 @@ objectClass: top
 cn: nguyenlet
 sn: nguyenlet
 uid: nguyenlet
-userpassword: Harveynash@123
+userpassword: Company@123
 
 dn: cn=Administrators,ou=groups,dc=nashtechglobal,dc=com
 objectClass: top
