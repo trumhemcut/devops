@@ -56,6 +56,28 @@ From here, you can create new account, change password, create new group, move u
 
 In case you are confident to config the LDAP Server via LDAP CLI, then you can remove this container in the ```docker-compose.yml```
 
+### Gitlab
+The Gitlab server is available at http://git.yourcompany.com. Beware that the ```build.sh``` has added the domain git.yourcompany.com to your hosts file & expose the port 80 from **gitlab** container. At the first time login to the gitlab server, you will be prompted to reset password of **root** account which is administrator.
+
+The **gitlab** server has been also setup to connect to LDAP Server, so you can login to gitlab with the credentials from LDAP server such as:
+
+**Root user:**
+Username | Password
+--- | ---
+root | ```Your reset password```
+
+**Username & password from LDAP:**
+Username | Password | Group
+--- | --- | ---
+phihuynh | Company@123 | admin
+phuongle | Company@123 | admin
+thiennguyen | Comapny@123 | users
+thangchung | Company@123 | users
+
+When you login to Gitlab using LDAP account for the first time, you may need the administrator update your email since I haven't set the email server yet. It's a bit annoying & I'm trying to solve it. To update email, login as administrator (root account) & go to **Admin area**, select **users**, select LDAP account, click **Edit** & then update email & Save.
+
+The LDAP account is now can join to the projects.
+
 ## Jenkins
 https://github.com/jenkinsci/docker
 https://github.com/jenkinsci/docker/issues/263
