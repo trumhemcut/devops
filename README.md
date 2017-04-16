@@ -62,11 +62,13 @@ The Gitlab server is available at http://git.yourcompany.com. Beware that the ``
 The **gitlab** server has been also setup to connect to LDAP Server, so you can login to gitlab with the credentials from LDAP server such as:
 
 **Root user:**
+
 Username | Password
 --- | ---
 root | ```Your reset password```
 
 **Username & password from LDAP:**
+
 Username | Password | Group
 --- | --- | ---
 phihuynh | Company@123 | admin
