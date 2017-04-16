@@ -26,7 +26,7 @@ USER jenkins
 # installing specific list of plugins. see: https://github.com/jenkinsci/docker#preinstalling-plugins
 # COPY plugins.txt /var/jenkins_home/plugins.txt
 # RUN /usr/local/bin/plugins.sh /var/jenkins_home/plugins.txt
-RUN /usr/local/bin/install-plugins.sh blueocean:1.0.1
+RUN /usr/local/bin/install-plugins.sh blueocean:1.0.1 gitlab:1.4.5
 # Adding default Jenkins Jobs
 # COPY jobs/1-github-seed-job.xml /usr/share/jenkins/ref/jobs/1-github-seed-job/config.xml
 # COPY jobs/2-job-dsl-seed-job.xml /usr/share/jenkins/ref/jobs/2-job-dsl-seed-job/config.xml

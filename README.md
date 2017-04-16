@@ -80,7 +80,25 @@ When you login to Gitlab using LDAP account for the first time, you may need the
 
 The LDAP account is now can join to the projects.
 
-## Jenkins
+### Jenkins
+To use Blueocean (new version of Jenkins), you have to login with an account. Otherwise, you can only work with Github project rather than Git project.
+
+Currently if you're using git with Blueoean, you're still not able to use the pipeline editor functionality (currently support Github). See here for more details: https://issues.jenkins-ci.org/browse/JENKINS-43148
+
+Some options has already setup:
+* **Plugins**: blueocean, gitlab
+* **Software**: dotnet sdk, Docker (ready to integrate with Docker host), nodejs
+
+There're 2 things you can integrate with Gitlab:
+* Auto-build when there're pushes to Gitlab: 
+    - Go to the Gitlab, choose user profile who has at least Developer right to the repositories. Then choose **Access Tokens**, input the **Name** (eg. Jenkins), chose **Expires at** some date of the year 2020, choose both scopes **api** & **read_user**. Then **Create Personal Access Token**.
+    - Go to Jenkins, **Credentials**, **System**, **Global Credentials**, **Add Credentials**, Kind Secret Text, **Secret** is the Personal Access Token (from Gitlab), put an **ID** (eg. Gitlab) then **OK**.
+    - Go back Manage Jenkins, **Configure System**, scroll down to Gitlab plugin, input **connection name** (eg. Gitlab), **Gitlab host URL** is http://git.yourcompany.com, **Credentials** is Gitlab (which you've just set above), click **Test Connection** to see it works. Then click **Save**.
+    - For the project to setup push event, go to **Configure**, **Build Triggers**, check **Build when a change is pushed to Gitlab**, click **Advanced**, click **Generate**, copy the secret token & Gitlab CI Service URL
+    - Go back to Gitlab to the repository where we want to integrate with. Click setting icon, choose **Integrations**, input the **URL** (Gitlab CI Service URL) and **secret token**. Click **Add Web Hook** then click **Test**. You'll see an build action in Jenkins to prove it works.
+* Notify Gitlab about the build result:
+    - Go back to Jenkins, chooose the project, click configure, at the post build step, click **Publish build status to Gitlab commit**
+
 https://github.com/jenkinsci/docker
 https://github.com/jenkinsci/docker/issues/263
 https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/
