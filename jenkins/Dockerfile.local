@@ -78,7 +78,7 @@ ENV DOTNET_SDK_VERSION 1.0.1
 ENV DOTNET_SDK_DOWNLOAD_URL https://dotnetcli.blob.core.windows.net/dotnet/Sdk/$DOTNET_SDK_VERSION/dotnet-dev-debian-x64.$DOTNET_SDK_VERSION.tar.gz
 
 RUN mkdir -p /usr/share/dotnet
-COPY ./dotnet/dotnet-dev-debian-$DOTNET_SDK_VERSION.tar.gz /usr/share/dotnet/dotnet.tar.gz
+COPY ./dotnet/dotnet-dev-debian-x64.$DOTNET_SDK_VERSION.tar.gz /usr/share/dotnet/dotnet.tar.gz
 RUN tar -zxf /usr/share/dotnet/dotnet.tar.gz -C /usr/share/dotnet \
     && rm /usr/share/dotnet/dotnet.tar.gz \
     && ln -s /usr/share/dotnet/dotnet /usr/bin/dotnet
@@ -96,5 +96,5 @@ RUN mkdir warmup \
 RUN curl -sL https://deb.nodesource.com/setup_7.x | bash -
 RUN apt-get -y install nodejs && npm install -g gulp-cli
 
-
+VOLUME ["/artifacts", "/root/.nuget"]
 USER jenkins
