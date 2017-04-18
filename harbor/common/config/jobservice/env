@@ -1,0 +1,15 @@
+MYSQL_HOST=mysql
+MYSQL_PORT=3306
+MYSQL_USR=root
+MYSQL_PWD=root123
+UI_SECRET=dqhRsJ5mI4pOcLmm
+SECRET_KEY=GmEPRnlxnvwUFwyw
+CONFIG_PATH=/etc/jobservice/app.conf
+REGISTRY_URL=http://registry:5000
+VERIFY_REMOTE_CERT=on
+MAX_JOB_WORKERS=3
+LOG_LEVEL=debug
+LOG_DIR=/var/log/jobs
+GODEBUG=netdns=cgo
+EXT_ENDPOINT=http://hub.yourcompany.com
+TOKEN_ENDPOINT=http://ui
