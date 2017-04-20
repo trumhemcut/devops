@@ -1,0 +1,91 @@
+properties([gitLabConnection('Gitlab')])
+
+ pipeline {
+    agent  any
+    stages {
+        stage('notifyStarted') {
+            steps {
+                notifyStarted()
+            }
+        }
+        stage('Build') {
+            steps {
+            sh '''
+                if [ "$(docker ps -aq -f name=aspnetcore)" ]; then
+                    docker rm -f aspnetcore
+                fi
+                if [ "$(docker ps -aq -f name=aspnetcore-uat)" ]; then
+                    docker rm -f aspnetcore-uat
+                fi
+                if [ "$(docker ps -aq -f name=aspnetcore-prod)" ]; then
+                    docker rm -f aspnetcore-prod
+                fi
+                '''
+            sh '''cd src
+        dotnet restore
+        dotnet build
+        dotnet publish -c Release -o /artifacts'''
+            }
+        }
+        stage('Tests') {
+            steps {
+                parallel(
+                "Unit Tests": {
+                    sh 'cd tests && dotnet restore && dotnet test --logger "trx;LogFileName=abc.trx"'
+                    
+                },
+                "Integration Tests": {
+                    sh 'echo \'Hello this is integration tests  \''
+                },
+                "End-to-end Tests": {
+                    sh 'echo \'Hello this is end-to-end tests\''
+                }
+                )
+            }
+        }
+        stage('Staging') {
+            steps {
+            sh '''
+                docker run -d -v devops_artifacts_data:/artifacts -p 5000:80 --name aspnetcore -w /artifacts microsoft/aspnetcore-build:1.0-1.1 dotnet /artifacts/src.dll
+                '''
+            }
+        }
+        stage('UAT') {
+            steps {
+            sh '''
+                docker run -d -v devops_artifacts_data:/artifacts -p 5001:80 --name aspnetcore-uat -w /artifacts microsoft/aspnetcore-build:1.0-1.1 dotnet /artifacts/src.dll
+                '''
+            }
+        }
+        stage('Production') {
+            steps {
+            sh '''
+                docker run -d -v devops_artifacts_data:/artifacts -p 5002:80 --name aspnetcore-prod -w /artifacts microsoft/aspnetcore-build:1.0-1.1 dotnet /artifacts/src.dll
+                '''
+            }
+        }
+    }
+    post {
+        success {
+            notifySuccessful()
+        }
+        failure {
+            notifyFailed()
+        }
+    }
+}
+
+def notifyStarted() {
+    updateGitlabCommitStatus name: 'jenkins', state: 'pending'
+    slackSend (color: '#FFFF00', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+}
+
+def notifySuccessful() {
+    updateGitlabCommitStatus name: 'jenkins', state: 'success'
+    slackSend (color: '#00FF00', message: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+}
+
+def notifyFailed() {
+    updateGitlabCommitStatus name: 'jenkins', state: 'failed'
+    slackSend (color: '#FF0000', message: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+}
