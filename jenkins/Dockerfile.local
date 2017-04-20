@@ -44,7 +44,7 @@ COPY config/config.xml /usr/share/jenkins/ref/config.xml
 COPY config/hudson.tasks.Maven.xml /usr/share/jenkins/ref/hudson.tasks.Maven.xml
 COPY config/hudson.plugins.groovy.Groovy.xml /usr/share/jenkins/ref/hudson.plugins.groovy.Groovy.xml
 COPY config/maven-global-settings-files.xml /usr/share/jenkins/ref/maven-global-settings-files.xml
-
+COPY config/jenkins.plugins.slack.SlackNotifier.xml /usr/share/jenkins/ref/jenkins.plugins.slack.SlackNotifier.xml
 # SSH Keys & Credentials
 COPY config/credentials.xml /usr/share/jenkins/ref/credentials.xml
 COPY config/ssh-keys/cd-demo /usr/share/jenkins/ref/.ssh/id_rsa

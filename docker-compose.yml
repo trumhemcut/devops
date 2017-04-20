@@ -58,6 +58,7 @@ services:
     container_name: nt-jenkins
     build: 
       context: ./jenkins
+      dockerfile: Dockerfile
     image: trumhemcut/jenkins:latest
     restart: always
     volumes: 

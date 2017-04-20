@@ -99,20 +99,20 @@ There're 2 things you can integrate with Gitlab:
 * Notify Gitlab about the build result:
     - Go back to Jenkins, chooose the project, click configure, at the post build step, click **Publish build status to Gitlab commit**
 
+### Slack Integration with Jenkins
+
+Jenkins can push notifications to Slack & Slack can do some action by sending commands to Jenkins. The Slack plugin has been installed in Jenkins automatically & it was setup to send to trumhemcut.slack.com, channel #devops. 
+
+To change the configuration to another Slack channel, just go to Slack > **App Directory** > Search for **Incoming Webhooks**> **Add Configuration** > **Add Incoming WebHooks integration**. From there copy the URL & token & paste back to Jenkins Configuration for Slack.
+
+Go back to Jenkins, **Mange Jenkins** > **Configure System** > Scroll down to **Global Slack Notifier Settings** & input **Base URL** is the URL copied from Slack Incoming WebHook, **team subdomain** is the subdomain you created for the slack account, **integration token** is the token you've just copied, channel is the channel you copied from the Slack & click **Test Connection** to see it works.
+
+### Reference sources
+Some useful links about Jenkins & Gitlabs:
 https://github.com/jenkinsci/docker
 https://github.com/jenkinsci/docker/issues/263
 https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/
-
-Bai rat hay de link tu JENKINS qua Gitlab
 https://github.com/jenkinsci/gitlab-plugin/wiki/Setup-Example
-
-Bai rat hay de link tu gitlab qua JIRA
-
-Jenkins & Docker volume & sibbling containers
 https://stackoverflow.com/questions/42946067/how-to-mount-docker-volume-with-jenkins-docker-container
-
-## Gitlab
 https://docs.gitlab.com/omnibus/docker/README.html
 
-## Install Nodejs on Debian
-https://github.com/nodesource/distributions
