@@ -13,8 +13,16 @@ This repo is folked from https://github.com/marcelbirkner/docker-ci-tool-stack
 ### Provisioning everything up by running ```./build.sh```
 ```
 $ git clone https://github.com/trumhemcut/devops.git && cd devops
-$ ./build.sh
+$ sudo ./build.sh
 ```
+It requires to run with admin user because it will add some hostnames to the /etc/hosts:
+* git.yourcompany.com (for Gitlab)
+* ldap.yourcompany.com (for LDAP Server)
+* jenkins.yourcompany.com (for Jenkins Server)
+* hub.yourcompany.com (for Docker Registry Local Hub)
+
+The purpose of this is to simulate the real environment when you're working on the company.
+
 It may take sometimes depending on the network connection to pull images & build the containers. If everything is ok, Docker will provision the following containers:
 - **nt-openldap**: An open LDAP server with some default credentials for you to use.
 - **nt-ldapadmin**: A webserver connects to LDAP to be easily manage the LDAP server such as creating new account, update password, etc...
