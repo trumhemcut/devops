@@ -57,7 +57,7 @@ From here, you can create new account, change password, create new group, move u
 In case you are confident to config the LDAP Server via LDAP CLI, then you can remove this container in the ```docker-compose.yml```
 
 ### Gitlab
-The Gitlab server is available at http://git.yourcompany.com. Beware that the ```build.sh``` has added the domain git.yourcompany.com to your hosts file & expose the port 80 from **gitlab** container. At the first time login to the gitlab server, you will be prompted to reset password of **root** account which is administrator.
+The Gitlab server is available at http://git.yourcompany.com. Beware that the ```build.sh``` has added the domain git.yourcompany.com to your hosts file & expose the port 80 from **gitlab** container. At the first time login to the gitlab server, you will be prompted to reset password of **root** account which is administrator. Be aware that Gitlab hasn't been using the default username & password ```root/5iveL!fe``` anymore, so you have to prompt new password for the first time setting up. (See https://gitlab.com/gitlab-org/gitlab-ce/issues/1980)
 
 The **gitlab** server has been also setup to connect to LDAP Server, so you can login to gitlab with the credentials from LDAP server such as:
 
@@ -98,6 +98,43 @@ There're 2 things you can integrate with Gitlab:
     - Go back to Gitlab to the repository where we want to integrate with. Click setting icon, choose **Integrations**, input the **URL** (Gitlab CI Service URL) and **secret token**. Click **Add Web Hook** then click **Test**. You'll see an build action in Jenkins to prove it works.
 * Notify Gitlab about the build result:
     - Go back to Jenkins, chooose the project, click configure, at the post build step, click **Publish build status to Gitlab commit**
+
+#### Note about Dockerfile.local
+I also created a Dockerfile.local because I have a slow experiemnt when downloading the dotnet SDK package. That's why I have to copy it locally to the image rather than downloading directly. In case you have the same experiment like me, it will be useful. To point to Dockerfile.local, open ```docker-compose.yml```, change from:
+```
+  jenkins:
+    container_name: nt-jenkins
+    build: 
+      context: ./jenkins
+      dockerfile: Dockerfile
+```
+
+to:
+
+```
+  jenkins:
+    container_name: nt-jenkins
+    build: 
+      context: ./jenkins
+      dockerfile: Dockerfile.local
+```
+
+#### Note about adding Gitlab Plugin Connection
+I created files call ```com.dabsquared.gitlabjenkins.connection.GitLabConnectionConfig.xml``` & ```credentials.xml```, copy them to the Dockerfile in progress of creating the Jenkins image. That means when the Jenkins container is up, it will have the Gitlab connection automatically. But of course, this is a hardcode configuration and the token is generated from the account ```phihuynh/Company@123``` with the command:
+
+```
+$ curl http://git.yourcompany.com/api/v3/session/ --data-urlencode 'login=phihuynh' --data-urlencode 'password=Company@123' | jq
+
+{
+  "name": "phihuynh",
+  "username": "phihuynh",
+  "id": 2,
+  ...
+  "external": false,
+  "private_token": "ymX_LJEGMfUW_nd8CJAy"
+}
+
+```
 
 ### Slack Integration with Jenkins
 
