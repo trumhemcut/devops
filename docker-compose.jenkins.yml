@@ -1,0 +1,24 @@
+version: '3'
+volumes: 
+  jenkins_home:
+  artifacts_data:
+services:
+  jenkins:
+    container_name: nt-jenkins
+    build: 
+      context: ./jenkins
+      dockerfile: Dockerfile
+    image: trumhemcut/jenkins:latest
+    restart: always
+    volumes: 
+      - /var/run/docker.sock:/var/run/docker.sock
+      - 'jenkins_home:/var/jenkins_home'
+      - 'artifacts_data:/artifacts'
+    hostname: 'jenkins.yourcompany.com'
+    ports: 
+      - '8080:8080'
+      - '50000:50000'
+    extra_hosts: 
+      - "git.yourcompany.com:${HOST_IP}"
+    depends_on: 
+      - gitlab

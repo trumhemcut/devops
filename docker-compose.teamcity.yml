@@ -1,0 +1,37 @@
+version: '3'
+volumes: 
+  teamcity-data:
+  teamcity-logs:
+  teamcity-agent:
+  nuget-cache-data:
+  artifacts-data:
+services: 
+  stepone-teamcity:
+    container_name: teamcity
+    build: 
+      context: ./teamcity/teamcity-server
+      dockerfile: Dockerfile
+    image: trumhemcut/teamcity-server
+    volumes: 
+      - teamcity-data:/data/teamcity_server/datadir
+      - teamcity-logs:/opt/teamcity/logs
+    ports: 
+      - "8111:8111"
+    hostname: "teamcity.yourcompany.com"
+  stepone-teamcity-agent:
+    container_name: teamcity-agent
+    build: 
+      context: ./teamcity/teamcity-agent
+      dockerfile: Dockerfile
+    image: trumhemcut/teamcity-agent
+    volumes: 
+      - teamcity-agent:/data/teamcity_agent/conf
+      - nuget-cache-data:/root/.nuget
+      - artifacts-data:/artifacts
+      - /var/run/docker.sock:/var/run/docker.sock
+    depends_on: 
+      - stepone-teamcity
+    extra_hosts: 
+      - "teamcity.yourcompany.com:${HOST_IP}"
+    environment: 
+      - SERVER_URL=teamcity.yourcompany.com:8111

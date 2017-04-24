@@ -3,7 +3,10 @@ export HOST_IP=$(ifconfig en0 | grep inet | grep -v inet6 | cut -d ' ' -f2)
 HOST_NAMES[0]="git.yourcompany.com"
 HOST_NAMES[1]="ldap.yourcompany.com"
 HOST_NAMES[2]="jenkins.yourcompany.com"
-HOST_NAMES[4]="hub.yourcompany.com"
+HOST_NAMES[3]="hub.yourcompany.com"
+HOST_NAMES[4]="teamcity.yourcompany.com"
+
+ci_tool='teamcity'
 
 for HOST_NAME in ${HOST_NAMES[@]}
 do
@@ -17,4 +20,4 @@ do
     fi
 done
 
-docker-compose up
+docker-compose -f docker-compose.yml -f docker-compose.${ci_tool}.yml up

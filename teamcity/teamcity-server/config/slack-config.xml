@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<slacknotifications enabled="true" teamName="nashtechvietnam" defaultChannel="nt-stepone" token="https://hooks.slack.com/services/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" iconurl="https://raw.githubusercontent.com/PeteGoo/tcSlackBuildNotifier/master/docs/TeamCity72x72.png" botname="TeamCity" showCommits="true" showCommitters="true" maxCommitsToDisplay="5" showBuildAgent="true" showElapsedBuildTime="true" showFailureReason="false" />

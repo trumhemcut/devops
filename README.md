@@ -152,6 +152,16 @@ To change the configuration to another Slack channel, just go to Slack > **App D
 
 Go back to Jenkins, **Mange Jenkins** > **Configure System** > Scroll down to **Global Slack Notifier Settings** & input **Base URL** is the URL copied from Slack Incoming WebHook, **team subdomain** is the subdomain you created for the slack account, **integration token** is the token you've just copied, channel is the channel you copied from the Slack & click **Test Connection** to see it works.
 
+### TeamCity
+
+Beside Jenkins, TeamCity is very powerful CI Tool. This Jenbrains' product allows you to use for free with the option: up to 20 build configurations, 3 build agents. I think it's enough for small & medium size projects.
+
+To setup Teamcity server up, you just change the variable ```ci_tool=teamcity``` then run the ```su ./build.sh``` to get the environment up. That's it!
+
+After the TeamCity is up, you browse to the website http://teamcity.yourcompany.com:8111 & setup the database, credential of admin for the first time. Then the TeamCity Agent will automatically connect to the TeamCity Server.
+
+The TeamCity Agent has built-in features such as .NET Core support, NodeJS support.
+
 ### Reference sources
 Some useful links about Jenkins & Gitlabs:
 https://github.com/jenkinsci/docker

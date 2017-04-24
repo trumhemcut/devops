@@ -1,11 +1,9 @@
 version: '3'
 volumes: 
-  jenkins_home:
   gitlab_data:
   gitlab_log:
   gitlab_config:
   ldap_data:
-  artifacts_data:
 services:
   openldap:
     build: 
@@ -54,25 +52,6 @@ services:
       - openldap
     extra_hosts: 
       - "jenkins.yourcompany.com:${HOST_IP}"
-  jenkins:
-    container_name: nt-jenkins
-    build: 
-      context: ./jenkins
-      dockerfile: Dockerfile
-    image: trumhemcut/jenkins:latest
-    restart: always
-    volumes: 
-      - /var/run/docker.sock:/var/run/docker.sock
-      - 'jenkins_home:/var/jenkins_home'
-      - 'artifacts_data:/artifacts'
-    hostname: 'jenkins.yourcompany.com'
-    ports: 
-      - '8080:8080'
-      - '50000:50000'
-    extra_hosts: 
-      - "git.yourcompany.com:${HOST_IP}"
-    depends_on: 
-      - gitlab
   sonarqube:
     container_name: nt-sonarqube
     image: sonarqube
