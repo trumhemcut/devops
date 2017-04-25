@@ -3,6 +3,7 @@ volumes:
   gitlab_data:
   gitlab_log:
   gitlab_config:
+  gitlab_runner:
   ldap_data:
 services:
   openldap:
@@ -52,6 +53,15 @@ services:
       - openldap
     extra_hosts: 
       - "jenkins.yourcompany.com:${HOST_IP}"
+  gitlab-runner:
+    container_name: nt-gitlab-runner
+    image: gitlab/gitlab-runner
+    volumes: 
+      - 'gitlab_runner:/etc/gitlab-runner'
+      - '/var/run/docker.sock:/var/run/docker.sock'
+    restart: always
+    extra_hosts: 
+      - "git.yourcompany.com:${HOST_IP}"
   sonarqube:
     container_name: nt-sonarqube
     image: sonarqube

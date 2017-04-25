@@ -7,7 +7,7 @@ volumes:
   artifacts-data:
 services: 
   stepone-teamcity:
-    container_name: teamcity
+    container_name: nt-teamcity
     build: 
       context: ./teamcity/teamcity-server
       dockerfile: Dockerfile
@@ -19,7 +19,7 @@ services:
       - "8111:8111"
     hostname: "teamcity.yourcompany.com"
   stepone-teamcity-agent:
-    container_name: teamcity-agent
+    container_name: nt-teamcity-agent
     build: 
       context: ./teamcity/teamcity-agent
       dockerfile: Dockerfile
