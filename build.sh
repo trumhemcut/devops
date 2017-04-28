@@ -1,3 +1,5 @@
+#!/bin/bash
+
 export HOST_IP=$(ifconfig en0 | grep inet | grep -v inet6 | cut -d ' ' -f2)
 
 HOST_NAMES[0]="git.yourcompany.com"
@@ -6,7 +8,11 @@ HOST_NAMES[2]="jenkins.yourcompany.com"
 HOST_NAMES[3]="hub.yourcompany.com"
 HOST_NAMES[4]="teamcity.yourcompany.com"
 
-ci_tool='teamcity'
+if [ "$1" != "" ]; then
+    ci_tool=$1
+else
+    ci_tool='teamcity'
+fi
 
 for HOST_NAME in ${HOST_NAMES[@]}
 do
